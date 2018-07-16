@@ -1,8 +1,9 @@
-# AvoRed Cash On Delivery Payment Module
+# AvoRed Pickup Shipping Module
 
 ### Installation
 
-    composer require avored/cash-on-delivery
+    composer require avored/pickup
     
-
 ### How to Use
+
+Go to Admin=>configuration=>enabled Pick up from Payment accordion tab
