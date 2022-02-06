@@ -1,15 +1,10 @@
 <?php
+namespace AvoRed\Pickup;
 
-namespace AvoRed\Pickup\Payment;
-
-use AvoRed\Framework\Payment\Payment as AbstractPayment;
-use AvoRed\Framework\Payment\Contracts\Payment as PaymentContract;
-use AvoRed\Framework\Models\Database\Configuration;
-
-class Pickup extends AbstractPayment implements PaymentContract
+class Pickup
 {
 
-    const CONFIG_KEY = 'payment_pickup_enabled';
+    const CONFIG_KEY = 'shipping_pickup_enabled';
 
     /**
      * Identifier for this Payment options.
@@ -23,14 +18,14 @@ class Pickup extends AbstractPayment implements PaymentContract
      *
      * @var string
      */
-    protected $name = 'Pickup From Store';
+    protected $name = 'Pickup from Store';
 
     /**
      * Payment options View Path.
      *
      * @var string
      */
-    protected $view = 'avored-pickup::index';
+    protected $view = 'avored-pickup::pickup';
 
     /**
      * Get Identifier for this Payment options.
@@ -44,11 +39,6 @@ class Pickup extends AbstractPayment implements PaymentContract
 
     public function enable()
     {
-        $isEnabled = Configuration::getConfiguration(self::CONFIG_KEY);
-        if (null === $isEnabled || false == $isEnabled) {
-            return false;
-        }
-
         return true;
     }
 
@@ -80,16 +70,5 @@ class Pickup extends AbstractPayment implements PaymentContract
     public function with()
     {
         return [];
-    }
-
-    /*
-     * Process Payment Calculation
-     *
-     */
-    public function process($orderData, $cartProducts, $request)
-    {
-        //EXECUTE API here if any??
-
-        return true;
     }
 }
